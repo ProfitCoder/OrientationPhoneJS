@@ -45,13 +45,13 @@
         boton.addEventListener("click",onClick);
 
         function onClick() {
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                 // Handle iOS 13+ devices.
-                DeviceMotionEvent.requestPermission()
+                DeviceOrientationEvent.requestPermission()
                 .then((state) => {
                     if (state === 'granted') 
                     {
-                        window.addEventListener('devicemotion', mostrarCoordenadas);
+                        window.addEventListener('deviceorientation', mostrarCoordenadas);
                     } 
                     else 
                     {
@@ -63,7 +63,7 @@
             else 
             {
                 // Handle regular non iOS 13+ devices.
-                window.addEventListener('devicemotion', mostrarCoordenadas);
+                window.addEventListener('deviceorientation', mostrarCoordenadas);
             }
         }
 
@@ -71,7 +71,6 @@
         {
             const alpha = e.alpha;
             const beta = e.beta;
-            const gamma = e.gamma;
 
             caja.innerHTML = "X: "+beta+" , Y: "+alpha;
         }
